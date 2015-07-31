@@ -1,10 +1,10 @@
-from aux import *
+execfile('scripts/aux.py')
 project,record,parameters = sumatra_record(__file__)
 
 # PARAMS
 seed = 65785        # seed for random number generator
-distr = "uniform"   # statistical distribution to draw values from
-n = 1000             # number of values to draw
+distr = "normal"   # statistical distribution to draw values from
+n = 10000             # number of values to draw
 # END OF PARAMS
 
 # MAIN SCRIPT

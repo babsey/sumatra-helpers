@@ -14,6 +14,7 @@ parser.add_argument('-r', '--record', dest='record', action='store_true', defaul
 parser.add_argument('--reason', dest='reason', type=str, default='',
                     help='Write reason for running script.')
 args = parser.parse_args()
+print args
 
 def sumatra_parameters(filename, start_tag="# PARAMS", end_tag="# END OF PARAMS"):
     with open(filename, 'r') as f:
@@ -23,6 +24,7 @@ def sumatra_parameters(filename, start_tag="# PARAMS", end_tag="# END OF PARAMS"
     return SimpleParameterSet(params)
 
 def sumatra_record(filename):
+    filename = os.path.relpath(filename)
     project = load_project()
     if args.param == 'inline':
         parameters = sumatra_parameters(filename)

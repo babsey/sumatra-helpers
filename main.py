@@ -1,4 +1,4 @@
-from aux import *
+execfile('scripts/aux.py')
 project,record,parameters = sumatra_record(__file__)
 vars().update(parameters)
 
