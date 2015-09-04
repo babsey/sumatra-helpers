@@ -13,6 +13,9 @@ parser.add_argument('-r', '--record', dest='record', action='store_true', defaul
                     help='Record the script running with Sumatra.')
 parser.add_argument('--reason', dest='reason', type=str, default='',
                     help='Write reason for running script.')
+parser.add_argument('--tags', dest='tags', type=str, default='',
+                    help='Write reason for running script.')
+
 args = parser.parse_args()
 print args
 
@@ -33,6 +36,9 @@ def sumatra_record(filename):
 
     if args.record:
         record = project.new_record(main_file=filename, reason=args.reason, parameters=parameters)
+        if args.tags != '':
+            for tag in args.tags.split(','):
+                record.tags.add(tag)
         record.duration = time.time()
     else:
         record = None
